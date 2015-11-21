@@ -78,8 +78,8 @@ export const Room = React.createClass({
 
 
 function mapStateToProps(state) {
-  const room = state.get('availableRooms').find(function(item) {
-    return (item.get('_id') === state.get('currentRoomId'));
+  const room = state.chapp.get('availableRooms').find(function(item) {
+    return (item.get('_id') === state.chapp.get('currentRoomId'));
   });
 
   let messages;
@@ -94,10 +94,10 @@ function mapStateToProps(state) {
   }
 
   return {
-    currentRoomId: state.get('currentRoomId'),
+    currentRoomId: state.chapp.get('currentRoomId'),
     currentRoom: room,
     messages: messages,
-    user: state.get('user')
+    user: state.chapp.get('user')
   };
 }
 

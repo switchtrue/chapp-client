@@ -39,8 +39,8 @@ export const Lobby = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    availablePeople: state.get('availablePeople'),
-    availableRooms: state.get('availableRooms')
+    availablePeople: state.chapp.get('availablePeople'),
+    availableRooms: state.chapp.get('availableRooms')
   };
 }
 

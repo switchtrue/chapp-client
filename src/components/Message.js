@@ -48,7 +48,6 @@ export default React.createClass({
 
   messageDateFormatted() {
     const messageDate = this.props.message.get('date');
-
     return messageDate.getHours() + ':' + messageDate.getMinutes();
   },
 

@@ -12,7 +12,7 @@ function setState(state, newState) {
 
 function createRoom(state, newRoom) {
   var newRoomWithId = newRoom;
-  newRoomWithId['_id'] = generateId();
+  newRoomWithI._id = generateId();
   const currentAvailableRooms = state.get('availableRooms');
   const newAvailableRooms = currentAvailableRooms.push(fromJS(newRoomWithId));
   var newState = state.set('availableRooms', newAvailableRooms);
@@ -47,7 +47,7 @@ function sendMessage(state, roomId, author, message) {
   return state.set('availableRooms', newRooms);
 }
 
-export default function(state = Map(), action) {
+export function chappReducer(state = Map(), action) {
   switch (action.type) {
     case ActionTypes.Lobby.setState:
       return setState(state, action.state);
