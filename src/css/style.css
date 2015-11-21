@@ -150,6 +150,11 @@ h2 {
   cursor: pointer
 }
 
+.room .messages-container {
+  height: calc(100% - 6rem - 5rem);
+  overflow-y: scroll;
+}
+
 .room .messages-container ul li {
   list-style: none;
   padding: 0.6rem;
@@ -158,4 +163,44 @@ h2 {
 
 .room .messages-container ul li:nth-child(odd) {
   background-color: #fafafa;
+}
+
+/* Message styles */
+
+.message {
+  position: relative;
+}
+
+.message .author {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
+  padding-left: 4rem;
+}
+
+.message .text {
+  display: block;
+  color: #777;
+  padding-left: 4rem;
+  white-space: pre;
+}
+
+.message .datetime {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #ccc;
+}
+
+.message .avatar {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  text-align: center;
+  font-size: 1.4rem;
+  border: 1px solid #333;
+  opacity: 0.7;
 }

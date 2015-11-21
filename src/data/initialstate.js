@@ -1,4 +1,8 @@
 export default {
+  'user': {
+    '_id': '1',
+    'name': 'Mike Leonard'
+  },
   'availableRooms': [
     {
       '_id':'1',

@@ -5,7 +5,7 @@ import * as actionCreators from '../actions/room';
 import RoomInfo from './RoomInfo';
 import PersonList from './PersonList';
 import {Link} from 'react-router';
-import {fromJS, List} from 'immutable';
+import {fromJS, List, Map} from 'immutable';
 import NewMessage from './NewMessage';
 import Message from './Message';
 
@@ -17,17 +17,6 @@ export const Room = React.createClass({
   componentWillUnmount: function() {
     this.props.leaveRoom();
   },
-
-  // getCurrentRoom: function() {
-  //   const availableRooms = this.props.availableRooms.toJS();
-  //   for (var i in availableRooms) {
-  //     var room = availableRooms[i];
-  //     if (room._id === this.props.currentRoomId) {
-  //       return fromJS(room);
-  //     }
-  //   }
-  //   return undefined;
-  // },
 
   renderMessages: function() {
     // console.log('***');
@@ -46,12 +35,10 @@ export const Room = React.createClass({
   },
 
   render: function() {
-    console.log('rendering');
     var messages = this.props.messages.map(function(message) {
-      console.log(message);
       return (
         <li key={message}>
-          <Message text={message}/>
+          <Message message={message} />
         </li>
       )
     });
@@ -79,7 +66,9 @@ export const Room = React.createClass({
                 {messages}
               </ul>
             </div>
-            <NewMessage roomId={this.props.currentRoomId} handleSendMessage={this.props.sendMessage}/>
+            <NewMessage roomId={this.props.currentRoomId}
+              handleSendMessage={this.props.sendMessage}
+              author={this.props.user}/>
           </div>
         </div>
       </div>
@@ -93,12 +82,22 @@ function mapStateToProps(state) {
     return (item.get('_id') === state.get('currentRoomId'));
   });
 
-  const messages = (room === undefined) ? new List(['No messages']) : new List(room.get('messages'));
+  let messages;
+  if (room === undefined || room.get('messages') === undefined) {
+    messages = new List([new Map({
+      author: 'Chapp',
+      message: 'Welcome! There are no messages yet, why dont you start the conversation.',
+      date: new Date()
+    })]);
+  } else {
+    messages = room.get('messages')
+  }
 
   return {
     currentRoomId: state.get('currentRoomId'),
     currentRoom: room,
-    messages: messages
+    messages: messages,
+    user: state.get('user')
   };
 }
 

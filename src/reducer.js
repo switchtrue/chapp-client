@@ -27,7 +27,7 @@ function leaveRoom(state) {
   return state.delete('currentRoom');
 }
 
-function sendMessage(state, roomId, message) {
+function sendMessage(state, roomId, author, message) {
   const availableRooms = state.get('availableRooms');
 
   const newRooms = availableRooms.update(
@@ -35,10 +35,10 @@ function sendMessage(state, roomId, message) {
       return item.get('_id') === roomId;
     }), function(item) {
       if (item.get('messages') === undefined) {
-        return item.set('messages', new List([message]));
+        return item.set('messages', new List([new Map({author: author, message: message, date: new Date()})]));
       } else {
         const currentMessages = item.get('messages');
-        const newMessages = currentMessages.push(message);
+        const newMessages = currentMessages.push(new Map({author: author, message: message, date: new Date()}));
         return item.set('messages', newMessages);
       }
     }
@@ -58,7 +58,7 @@ export default function(state = Map(), action) {
     case ActionTypes.Room.leaveRoom:
       return leaveRoom(state);
     case ActionTypes.Room.sendMessage:
-      return sendMessage(state, action.payload.roomId, action.payload.message);
+      return sendMessage(state, action.payload.roomId, action.payload.author, action.payload.message);
   }
   return state;
 }

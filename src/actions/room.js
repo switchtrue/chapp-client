@@ -15,11 +15,12 @@ export function leaveRoom() {
   };
 }
 
-export function sendMessage(roomId, message) {
+export function sendMessage(roomId, author, message) {
   return {
     type: ActionTypes.Room.sendMessage,
     payload: {
       roomId: roomId,
+      author: author,
       message: message
     }
   };

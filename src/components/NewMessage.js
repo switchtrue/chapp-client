@@ -6,7 +6,7 @@ export default React.createClass({
     var message = this.refs.messageText.value.trim();
     this.refs.messageText.value = '';
     if (message !== '') {
-      this.props.handleSendMessage(this.props.roomId, message);
+      this.props.handleSendMessage(this.props.roomId, this.props.author.get('name'), message);
     }
   },
   onSubmitSendMessage: function(e) {
@@ -14,7 +14,7 @@ export default React.createClass({
     this.sendMessage();
   },
   onKeyDownSendMessage: function(e) {
-    if (e.keyCode == 13) {
+    if (!e.shiftKey && e.keyCode == 13) {
       e.preventDefault();
       this.sendMessage();
     }
