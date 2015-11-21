@@ -1,0 +1,161 @@
+/* General */
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Helvetica, Arial, sans-serif;
+  color: #333;
+}
+
+a, a:visited {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header {
+  display: block;
+  background-color: #333;
+  color: #33FFCC;
+  height: 3rem;
+  padding: 0.7rem;
+  box-sizing: border-box;
+  font-size: 1.6em;
+}
+
+header a, header a:visited {
+  color: #33FFCC;
+  font-weight: bold;
+}
+
+.breadcrumb-container {
+  width: 15%;
+}
+
+.breadcrumb:before {
+  content: '< ';
+}
+
+h2 {
+  background-color: #33FFCC;
+  height: 2rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.person-list .person-info {
+  padding: 0.5rem;
+}
+
+/* Lobby Styles */
+
+.lobby-content-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.lobby .person-list-container,
+.lobby .room-list-container {
+  width: 50%;
+}
+
+.lobby .person-list,
+.lobby .room-list {
+  display: flex;
+}
+
+.lobby .person-list {
+  flex-direction: column;
+}
+
+.lobby .room-list {
+  flex-wrap: wrap;
+}
+
+.lobby .room-list .room-info {
+  padding: 1em;
+  border: solid 1px black;
+  margin: 1rem;
+  width: 10rem;
+}
+
+/* Room Styles */
+
+.room .room-info {
+  padding-top: 0.3rem;
+  font-size: 1rem;
+}
+
+.room .room-info h3 {
+  display: inline;
+}
+
+.room .room-info h3:after {
+  content: ' | ';
+  font-weight: normal;
+}
+
+.room .room-content-container {
+  display: flex;
+}
+
+.room .chat-container {
+  width: 85%;
+}
+
+.room .participants-container {
+  width: 15%;
+  height: calc(100% - 3rem);
+  border-right: 1px solid #33FFCC;
+}
+
+.room header {
+  display: flex;
+}
+
+.room .chat-container {
+  position: relative;
+}
+
+.room .new-message {
+  position: absolute;
+  bottom: 0;
+  border-top: 1px solid #33FFCC;
+  width: 100%;
+  height: 6rem;
+}
+
+.room .new-message textarea {
+  height: 100%;
+  font-size: 1.1rem;
+  border: none;
+  width: calc(100% - 6rem);
+  padding: 0.3rem;
+}
+
+.room .new-message input[type="submit"] {
+  height: 6rem;
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  background-color: #33FFCC;
+  font-weight: bold;
+  width: 6rem;
+}
+
+.room .new-message input[type="submit"]:hover {
+  color: #E5FFF9;
+  background-color: #333;
+  cursor: pointer
+}
+
+.room .messages-container ul li {
+  list-style: none;
+  padding: 0.6rem;
+  border-bottom: 1px solid #eee;
+}
+
+.room .messages-container ul li:nth-child(odd) {
+  background-color: #fafafa;
+}
