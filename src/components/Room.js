@@ -19,15 +19,11 @@ export const Room = React.createClass({
   },
 
   renderMessages: function() {
-    // console.log('***');
-    // console.log(this.props.messages);
     if (this.props.messages.size === 0) {
       return '<li>No messages yet, say something!</li>';
     } else {
       var messages = '';
       this.props.messages.map((message) => {
-        // console.log('message:');
-        // console.log(message);
         messages += '<li key=${message}>' + message + '</li>';
       });
       return messages;
@@ -86,7 +82,7 @@ function mapStateToProps(state) {
   if (room === undefined || room.get('messages') === undefined) {
     messages = new List([new Map({
       author: 'Chapp',
-      message: 'Welcome! There are no messages yet, why dont you start the conversation.',
+      message: 'Welcome! There are no messages yet, why dont you start the conversation?.',
       date: new Date()
     })]);
   } else {
