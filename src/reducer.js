@@ -32,7 +32,7 @@ function sendMessage(state, roomId, author, message) {
 
   const newRooms = availableRooms.update(
     availableRooms.findIndex(function(item) {
-      return item.get('_id') === roomId;
+      return item.get('id') === roomId;
     }), function(item) {
       if (item.get('messages') === undefined) {
         return item.set('messages', new List([new Map({author: author, message: message, date: new Date()})]));

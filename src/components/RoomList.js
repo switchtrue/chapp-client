@@ -7,9 +7,9 @@ export default React.createClass({
   render: function() {
     var rooms = this.props.rooms.map(function(room) {
       return (
-        <Link to={`/rooms/${room.get('_id')}`}>
-          <RoomInfo id={room.get('_id')}
-            key={room.get('_id')}
+        <Link to={`/rooms/${room.get('id')}`}>
+          <RoomInfo id={room.get('id')}
+            key={room.get('id')}
             name={room.get('name')}
             description={room.get('description')} />
         </Link>

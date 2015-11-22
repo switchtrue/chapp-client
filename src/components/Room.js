@@ -46,7 +46,7 @@ export const Room = React.createClass({
           <div className="breadcrumb-container">
             <Link to={`/`} className="breadcrumb">Lobby</Link>
           </div>
-          <RoomInfo id={this.props.currentRoom.get('_id')}
+          <RoomInfo id={this.props.currentRoom.get('id')}
             name={this.props.currentRoom.get('name')}
             description={this.props.currentRoom.get('description')} />
         </header>
@@ -75,7 +75,7 @@ export const Room = React.createClass({
 
 function mapStateToProps(state) {
   const room = state.chapp.get('availableRooms').find(function(item) {
-    return (item.get('_id') === state.chapp.get('currentRoomId'));
+    return (item.get('id') === state.chapp.get('currentRoomId'));
   });
 
   let messages;

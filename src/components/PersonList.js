@@ -6,7 +6,7 @@ export default React.createClass({
   render: function() {
     var people = this.props.people.map(function(person) {
       return (
-        <PersonInfo key={person.get('_id')} name={person.get('name')} />
+        <PersonInfo key={person.get('id')} name={person.get('name')} />
       )
     });
     return (
